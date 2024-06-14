@@ -7,7 +7,7 @@
     background: rgba(150, 150, 150, 0.1);
     border-radius: 2vmin;
     text-align: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(1vmin);
     -webkit-backdrop-filter: blur(10px);
     /* border: 1px solid rgba(150, 150, 150, 0.15); */
 }

@@ -1,7 +1,10 @@
 #dayForcast{
     padding: 4vmin 6vmin;
     box-sizing: border-box;
-    
+    animation: fade 0.5s linear;
+    animation-iteration-count: 1;
+    transition: animation 0.5s;
+
     hr{
         border:0.1vmin solid rgba(255, 255, 255, 0.1);
         margin: 1vh 0;
@@ -48,6 +51,7 @@
 
 .dayForcastItem>p{
     width: 30%;
+    font-size: 1.8vmin;
 }
 .dayForcastItem>span{
     font-size: 3vmin;
@@ -65,5 +69,15 @@
     span{
         font-size: 1vmin;
         margin: 0.3vmin 0 0 0.2vmin;
+    }
+}
+
+
+@keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
     }
 }

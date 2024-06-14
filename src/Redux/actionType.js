@@ -1,0 +1,1 @@
+export const FORECAST_DATA = "FORECAST_DATA"

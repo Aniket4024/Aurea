@@ -1,11 +1,15 @@
 #timeForcast{
     padding: 4vmin 6vmin;
     box-sizing: border-box;
+    animation: fade 0.5s linear;
+    animation-iteration-count: 1;
+    transition: animation 0.5s;
     
     hr{
         border:0.1vmin solid rgba(255, 255, 255, 0.1);
         margin: 1vh 0;
     }
+
 }
 #timeForcast>p{
     margin: 0;
@@ -43,4 +47,17 @@
 }
 .timeForcastItem>span{
     font-size: 4vmin;
+}
+
+
+
+
+
+@keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
