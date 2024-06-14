@@ -1,0 +1,46 @@
+#timeForcast{
+    padding: 4vmin 6vmin;
+    box-sizing: border-box;
+    
+    hr{
+        border:0.1vmin solid rgba(255, 255, 255, 0.1);
+        margin: 1vh 0;
+    }
+}
+#timeForcast>p{
+    margin: 0;
+    text-align: start;
+    color: white;
+    font-size: 2vmin;
+}
+
+#timeData{
+    padding-top: 0.5vh;
+    justify-content: space-between;
+}
+
+.timeForcastItem{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2vh 0;
+    color: white;
+}
+.timeForcastItem>p:nth-child(1){
+    margin: 0;
+    font-size: 1.8vmin;
+}
+.timeForcastItem>p:nth-child(3){
+        margin: -0.3vmin 0 0 0;
+        font-size: 2.2vmin;
+        align-items: flex-start;
+        text-align: center;
+        justify-content: center;
+
+        span{
+            font-size: 1vmin;
+            margin: 0.3vmin 0 0 0.2vmin;
+        }
+}
+.timeForcastItem>span{
+    font-size: 4vmin;
+}

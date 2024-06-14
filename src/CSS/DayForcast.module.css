@@ -1,0 +1,69 @@
+#dayForcast{
+    padding: 4vmin 6vmin;
+    box-sizing: border-box;
+    
+    hr{
+        border:0.1vmin solid rgba(255, 255, 255, 0.1);
+        margin: 1vh 0;
+    }
+}
+#dayForcast>p{
+    margin: 0;
+    text-align: start;
+    color: white;
+    font-size: 2vmin;
+}
+
+#dayData{
+    padding-top: 2vh;
+    gap: 1vh 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.dayForcastItem{
+    justify-content: space-between;
+    gap: 0 4vmin;
+    color: white;
+    width: 100%;
+    
+    p{
+        margin: 0;
+        text-align: start;
+    }
+}
+.dayForcastItem>div{
+    width: 40%;
+    height: 0.3vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 1vh;
+    justify-content: center;
+
+    /* div{
+        background-color: greenyellow;
+        height: 100%;
+    } */
+}
+
+.dayForcastItem>p{
+    width: 30%;
+}
+.dayForcastItem>span{
+    font-size: 3vmin;
+    width: 10%;
+}
+.dayForcastItem>p:nth-child(3), .dayForcastItem>p:nth-child(5){
+    margin: -0.3vmin 0 0 0;
+    font-size: 2.2vmin;
+    align-items: flex-start;
+    text-align: center;
+    /* justify-content: center; */
+    justify-content: flex-end;
+    width: 10%;
+    
+    span{
+        font-size: 1vmin;
+        margin: 0.3vmin 0 0 0.2vmin;
+    }
+}

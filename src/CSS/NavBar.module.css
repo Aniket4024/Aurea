@@ -1,0 +1,70 @@
+#navbar{
+    height: 20%;
+    padding: 2vh 0;
+    width: 100%;
+    /* background-color: red; */
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+#navbar>img{
+    /* aspect-ratio: 16/9; */
+    width: 17vh;
+    margin-top: 4vh;
+}
+
+#navRight{
+    width: 50%;
+    justify-content: flex-end;
+    gap: 2vmin;
+    padding-top: 8vh;
+}
+
+#searchBox{
+    width: 60%;
+    /* border: 0.1vmin solid rgba(128, 128, 128, 0.259); */
+    height: auto;
+    padding: 0.7vh 1.5vh;
+    border-radius: 1vmin;
+    box-sizing: border-box;
+}
+#inputBox{
+    justify-content: flex-start;
+    gap: 1vmin;
+    font-size: 2vmin;
+    color: rgb(255, 255, 255);
+
+    input::placeholder {
+        color: white;
+    }
+
+    input{
+        
+        color: white;
+        height: 2.2vh;
+        font-size: 1.8vmin;
+        width: 100%;
+        border: 0;
+        outline: 0;
+        background-color: transparent;
+        padding-top: 0.5vh;
+    }
+
+    span{
+        font-size: 1.7vmin;
+    }
+}
+#inputDropdown{
+    
+}
+
+#favoriteCity{
+    width: 27%;
+    padding: 0.5vh 1.8vh 0.7vh 1.8vh;
+    box-sizing: border-box;
+    gap: 1vmin;
+    color: white;
+    cursor: pointer;
+    /* background-color: rgba(128, 128, 128, 0.6); */
+    border-radius: 1vmin;
+    font-size: 1.8vmin;
+}

@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  overflow: hidden;
+  
+  background-image: url("./Assets/bgIMG.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Poppins", sans-serif;
 }
 
 .App-logo {
