@@ -114,7 +114,7 @@ const DayForcast = () => {
   
 
   const day = today.getDay()
-  console.log(day)
+
 
   return <div className='glass' id={style.dayForcast}>
     <p>5-Days Forecast</p>

@@ -3,7 +3,7 @@ import style from '../CSS/NavBar.module.css'
 import { FaLocationDotIcon, MdFavoriteIcon } from './Icons'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
-import { settingData } from '../Redux/ForecastReducer/action'
+import { SetLoading, SideBarToggle, settingData } from '../Redux/ForecastReducer/action'
 
 const NavBar = () => {
 
@@ -11,7 +11,7 @@ const NavBar = () => {
   const dispatch = useDispatch()
 
 
-  const url1 = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=d2f76984b16c976562b3fef7f4e28e4f`
+  // const url1 = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=d2f76984b16c976562b3fef7f4e28e4f`
   const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=d2f76984b16c976562b3fef7f4e28e4f`
 
 
@@ -26,9 +26,14 @@ const NavBar = () => {
   }
   
 
+
+
   useEffect(()=>{
+    dispatch(SetLoading(true))
+
     axios.get(url)
       .then((res)=>{ 
+        dispatch(SetLoading(false))
         dispatch(settingData(res.data))
         setLocation("")
       })
@@ -36,6 +41,7 @@ const NavBar = () => {
         console.log(err)
       })
   },[])
+
 
 
 
@@ -61,7 +67,7 @@ const NavBar = () => {
         </div>
       </div>
 
-      <div id={style.favoriteCity} className='flex glass'>
+      <div id={style.favoriteCity} className='flex glass' onClick={()=>dispatch(SideBarToggle())}>
         <span><MdFavoriteIcon/></span>
         Favorite Cities
       </div>

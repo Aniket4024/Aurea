@@ -1,11 +1,15 @@
 import { FaLocationDot } from "react-icons/fa6";
-import { MdFavorite } from "react-icons/md";
+import { MdDelete, MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { BsCloud, BsCloudFill, BsCloudHaze2, BsCloudHaze2Fill, BsCloudLightningRain, BsCloudLightningRainFill, BsCloudRain, BsCloudRainFill, BsCloudSnow, BsCloudSnowFill, BsCloudSun, BsCloudSunFill, BsClouds, BsFillCloudsFill, BsSun, BsSunFill } from "react-icons/bs";
+import { IoClose } from "react-icons/io5";
 
 
 
 export const FaLocationDotIcon = ({style})=> <FaLocationDot style={style} />
 export const MdFavoriteIcon = ({style})=> <MdFavorite style={style} />
+export const MdFavoriteBorderIcon = ({style})=> <MdFavoriteBorder style={style} />
+export const MdDeleteIcon = ({style})=> <MdDelete style={style} />
+export const IoCloseIcon = ({style})=> <IoClose style={style} />
 
 
 // 01 - clean Sky

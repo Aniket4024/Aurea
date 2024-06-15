@@ -1,16 +1,28 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import style from "../CSS/Main.module.css"
 import DayForcast from "./DayForcast"
 import NavBar from "./NavBar"
 import TimeForcast from "./TimeForcast"
 import { useEffect, useState } from "react"
-import { BsCloudHaze2Icon, BsCloudIcon, BsCloudLightningRainIcon, BsCloudRainIcon, BsCloudSnowIcon, BsCloudSunIcon, BsCloudsIcon, BsSunIcon } from "./Icons"
+import { BsCloudHaze2Icon, BsCloudIcon, BsCloudLightningRainIcon, BsCloudRainIcon, BsCloudSnowIcon, BsCloudSunIcon, BsCloudsIcon, BsSunIcon, MdFavoriteBorderIcon, MdFavoriteIcon } from "./Icons"
+import SideBar from "./SideBar"
+import axios from "axios"
+import { SideBarToggle } from "../Redux/ForecastReducer/action"
 
 const Main = () => {
 
-  const {dataR} = useSelector(store=>{
+  
+  const [fav,setFav] = useState(true)
+  const [cityData,setCityData] = useState([])
+  const dispatch = useDispatch()
+  
+  // window.addEventListener("click", dispatch(SideBarToggle()))
+
+
+  const {dataR,loadingR} = useSelector(store=>{
     return {
-      dataR:store.ForecastReducer.data
+      dataR:store.ForecastReducer.data,
+      loadingR:store.ForecastReducer.loading,
     }
   })
 
@@ -35,13 +47,68 @@ const Main = () => {
   }
 
 
+  const handleClick = (e)=>{
+    
+    
+
+    // axios.post('http://localhost:8080/fav', { "name": e })
+    //   .then((res) => {
+    //       console.log(res);
+    //   })
+    //   .catch((err) => {
+    //       console.log(err);
+    //   });
+    const ok = cityData?.find(city => city.name === e);
+
+    if(ok?.name==e){
+      alert("Alreay Exist! ⚠️")
+    }
+    else{
+
+      if(cityData.length <= 15){
+        axios.post('http://localhost:8080/fav', { "name": e })
+        .then((res) => {
+            console.log(res);
+            alert(`${e} is added to Favorite City! ✅`)
+        })
+        .catch((err) => {
+            alert("Error, some thing went wrong ! ❌")
+        });
+      }
+      else{
+        alert("You can Not add More than 15 cities in Favorite! ⚠️")
+      }
+      
+    }
+  }
+
+
+
+  useEffect(()=>{
+    axios.get('http://localhost:8080/fav')
+    .then((res)=>{
+
+      setCityData(res.data)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  },[handleClick])
+
+
   return <div id={style.main}>
     <NavBar/>
     <section className="flex" id={style.container}>
         <div id={style.left} className="flex">
-            <div>
+          {
+            loadingR ? 
+            <div id={style.loader}></div> 
+            : 
+            <div id={style.mainBody}>
+              
                 <div id={style.temprature} className="flex">
-                    <h1 className="flex">
+                      
+                      <h1 className="flex">
                       {
                         dataR?.list?.map((e)=>{
                           return e?.dt_txt == getDate() ? e?.main?.temp : null
@@ -70,7 +137,15 @@ const Main = () => {
                     }
                     </span>
                 </div>
-                <h3 className="flex"> {dataR?.city?.country=="IN" ? <img src={require("../Assets/india.png")} alt="" /> : ""} {dataR?.city?.name}</h3>
+                <h3 className="flex"> 
+                  {dataR?.city?.country=="IN" ? <img src={require("../Assets/india.png")} alt="" /> : ""} 
+                  {dataR?.city?.name} 
+                  <span onClick={()=>handleClick(dataR?.city?.name)}>
+
+                      <MdFavoriteIcon/> 
+                      {/* : <MdFavoriteBorderIcon/> */}
+                  </span> 
+                </h3>
                 <p>
                   {/* {dataR?.main?.temp_min} : {dataR?.main?.temp_max} | H: {dataR?.main?.humidity}° | P: {dataR?.main?.pressure} */}
                   {
@@ -82,12 +157,14 @@ const Main = () => {
                   }
                 </p>
             </div>
+          }
         </div>
         <div id={style.right}>
           <TimeForcast/>
           <DayForcast/>
         </div>
     </section>
+    <SideBar/>
   </div>
 }
 
