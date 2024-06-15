@@ -1,11 +1,12 @@
-import { FORECAST_DATA, LOADING, TOGGLE } from "../actionType"
+import { FAV_DATA, FORECAST_DATA, LOADING, TOGGLE } from "../actionType"
 
 
 
 const initialstate = {
     data:{},
     toggle:false,
-    loading:false
+    loading:false,
+    favCities:[]
 }
 
 export const reducer = (state=initialstate,{type,payload})=>{
@@ -16,6 +17,8 @@ export const reducer = (state=initialstate,{type,payload})=>{
             return {...state,toggle:!state.toggle}
         case LOADING:
             return {...state,loading:payload}
+        case FAV_DATA:
+            return {...state,favCities:payload}
         default:
             return {...state}
     }

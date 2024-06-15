@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 import { BsCloudHaze2Icon, BsCloudIcon, BsCloudLightningRainIcon, BsCloudRainIcon, BsCloudSnowIcon, BsCloudSunIcon, BsCloudsIcon, BsSunIcon, MdFavoriteBorderIcon, MdFavoriteIcon } from "./Icons"
 import SideBar from "./SideBar"
 import axios from "axios"
-import { SideBarToggle } from "../Redux/ForecastReducer/action"
+import { FavCityTrigger, SideBarToggle } from "../Redux/ForecastReducer/action"
 
 const Main = () => {
 
@@ -70,6 +70,7 @@ const Main = () => {
         .then((res) => {
             console.log(res);
             alert(`${e} is added to Favorite City! ✅`)
+            dispatch(FavCityTrigger())
         })
         .catch((err) => {
             alert("Error, some thing went wrong ! ❌")
@@ -87,13 +88,12 @@ const Main = () => {
   useEffect(()=>{
     axios.get('http://localhost:8080/fav')
     .then((res)=>{
-
       setCityData(res.data)
     })
     .catch((err)=>{
       console.log(err)
     })
-  },[handleClick])
+  },[])
 
 
   return <div id={style.main}>

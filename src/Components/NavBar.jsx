@@ -9,6 +9,7 @@ const NavBar = () => {
 
   const [location,setLocation] = useState("Nagpur")
   const dispatch = useDispatch()
+  const [tempUnit,setTempUnit] = useState("metric")
 
 
   // const url1 = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=d2f76984b16c976562b3fef7f4e28e4f`
@@ -35,7 +36,6 @@ const NavBar = () => {
       .then((res)=>{ 
         dispatch(SetLoading(false))
         dispatch(settingData(res.data))
-        setLocation("")
       })
       .catch((err)=>{
         console.log(err)
@@ -56,7 +56,7 @@ const NavBar = () => {
           <span><FaLocationDotIcon/></span>
           <input 
             type="text"
-            placeholder='Search Your City - Ex. Nagpur'
+            placeholder='Search Your City Name'
             onChange={e=>setLocation(e.target.value)}
             onKeyPress={handleSearch}
             value={location}
@@ -70,6 +70,17 @@ const NavBar = () => {
       <div id={style.favoriteCity} className='flex glass' onClick={()=>dispatch(SideBarToggle())}>
         <span><MdFavoriteIcon/></span>
         Favorite Cities
+      </div>
+
+      <div id={style.units} className='flex'>
+        <div className='flex' >
+          <input type="radio" name='unit' checked={tempUnit==="metric"}  onClick={()=>{setTempUnit("metric");setLocation(p=>p)}}/>
+          <p className='flex'><span>°</span>C</p>
+        </div>
+        <div className='flex'>
+          <input type="radio" name='unit' checked={tempUnit==="imperial"} onClick={()=>{setTempUnit("imperial");setLocation(p=>p)}}/>
+          <p className='flex'><span>°</span>F</p>
+        </div>
       </div>
 
     </div>

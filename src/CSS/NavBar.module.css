@@ -24,7 +24,7 @@
 }
 
 #searchBox{
-    width: 60%;
+    width: 34%;
     /* border: 0.1vmin solid rgba(128, 128, 128, 0.259); */
     height: auto;
     padding: 0.7vh 1.5vh;
@@ -57,20 +57,56 @@
         font-size: 1.7vmin;
     }
 }
-/* #inputDropdown{
-    
-} */
+
+
+
+
 
 #favoriteCity{
-    width: 27%;
-    padding: 0.7vh 1.8vh;
+    width: 30%;
+    padding: 0.7vh 1.5vh;
     box-sizing: border-box;
     gap: 1vmin;
     color: white;
     cursor: pointer;
     /* background-color: rgba(128, 128, 128, 0.6); */
     border-radius: 1vmin;
+    font-size: 1.7vmin;
+}
+
+#units{
+    width: 20%;
+    padding: 0.7vh 1.5vh;
+    box-sizing: border-box;
+    gap: 1vmin;
+    color: white;
+    cursor: pointer;
+    border-radius: 1vmin;
     font-size: 1.8vmin;
+    justify-content: flex-end;
+
+    div{
+        input{
+            width: 2vh;
+            height: 2vh;
+            cursor: pointer;
+        }
+        
+        p{
+            font-size: 2.2vmin;
+            align-items: flex-start;
+            text-align: center;
+            justify-content: center;
+            /* margin-top: 3vmin; */
+    
+            span{
+                font-size: 2vmin;
+                margin: 0.1vmin 0 0 0.2vmin;
+            }
+        }
+    }
+
+
 }
 
 
